@@ -4,14 +4,19 @@ import './login.css'
 export default function Login(){
     let navigate = useNavigate();
    const[mail,setMail]=useState('')
-    const[name,setName]=useState('')
+    const[fname,setfName]=useState('')
     const[phnum,setPhNum]=useState('')
+    const[lname,setlName]=useState('')
+    const[password,setPassword]=useState('')
+
     const handleSubmit =()=>{
-        localStorage.setItem('data',JSON.stringify({name:name,phnum:phnum,mail:mail}));
+        localStorage.setItem('data',JSON.stringify({fname:fname,phnum:phnum,mail:mail,lastname:lname,password:password}));
         navigate("/")
-        setName('')
+        setfName('')
         setMail('')
         setPhNum('')
+        setlName('')
+        setPassword('')
     };
     useEffect(()=>{
         const data=localStorage.getItem('data')
@@ -29,6 +34,7 @@ export default function Login(){
                 type="text" required
                 className="form-control"
                 placeholder=""
+                value={fname} onChange={(e)=>setfName(e.target.value)}
             />
             </div>
             <div className="mb-3">
@@ -37,6 +43,7 @@ export default function Login(){
                 type="text" required
                 className="form-control"
                 placeholder=""
+                value={lname} onChange={(e)=>setlName(e.target.value)}
             />
             </div>
             <div className="mb-3">
@@ -45,6 +52,7 @@ export default function Login(){
                 type="tel"
                 className="form-control"
                 placeholder=""
+                value={phnum} onChange={(e)=>setPhNum(e.target.value)}
             />
             </div>
             <div className="mb-3">
@@ -53,6 +61,7 @@ export default function Login(){
                 type="email" required
                 className="form-control"
                 placeholder=""
+                value={mail} onChange={(e)=>setMail(e.target.value)}
             />
             </div>
             <div className="mb-3">
@@ -61,6 +70,7 @@ export default function Login(){
                 type="password"
                 className="form-control"
                 placeholder=""
+                value={password} onChange={(e)=>setPassword(e.target.value)}
             />
             </div>
             <div className="d-grid">
